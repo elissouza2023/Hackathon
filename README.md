@@ -11,10 +11,11 @@ Cada notebook implementa um pipeline completo de NLP clássico, desde o pré-pro
 ---
 
 ## 📁 Estrutura do projeto
+```
 ├── notebooks/
-│   ├── sentiment_pt.ipynb        # Português
-│   ├── sentiment_es.ipynb        # Espanhol
-│   └── sentiment_en.ipynb        # Inglês
+│   ├── sentiment_pt.ipynb    # Português
+│   ├── sentiment_es.ipynb    # Espanhol
+│   └── sentiment_en.ipynb    # Inglês
 ├── models/
 │   ├── modelo_lr_sentimentos_es.pkl
 │   ├── modelo_svm_sentimentos_es.pkl
@@ -23,8 +24,7 @@ Cada notebook implementa um pipeline completo de NLP clássico, desde o pré-pro
 │   └── dataset_es.csv
 ├── requirements.txt
 └── README.md
-
-
+```
 
 ## 🧠 Metodologia
 
@@ -56,21 +56,19 @@ Os modelos treinados e o vetorizador TF-IDF são armazenados na pasta `models/` 
 ## ▶️ Como usar
 
 1. Clone o repositório:
-
-   ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+```bash
+git clone https://github.com/seu-usuario/seu-repositorio.git
+```
 
 2. Instale as dependências:
-
-  ```bash
-    pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
+```
 
 3. Abra o notebook correspondente ao idioma desejado:
-
-  ```bash
-sentiment_pt.ipynb (Português)
-sentiment_es.ipynb (Espanhol)
-sentiment_en.ipynb (Inglês)
+   - `sentiment_pt.ipynb` (Português)
+   - `sentiment_es.ipynb` (Espanhol)
+   - `sentiment_en.ipynb` (Inglês)
 
 4. Execute as células em ordem.
 
@@ -78,12 +76,12 @@ sentiment_en.ipynb (Inglês)
 
 ## 📌 Observações importantes
 
-Os notebooks foram projetados para datasets monolíngues.
-Não é utilizada tradução automática.
-O foco do projeto é:
-Interpretabilidade
-Simplicidade
-Baixo custo computacional
+- Os notebooks foram projetados para datasets monolíngues.
+- Não é utilizada tradução automática.
+- O foco do projeto é:
+  - Interpretabilidade
+  - Simplicidade
+  - Baixo custo computacional
 
 ---
 
