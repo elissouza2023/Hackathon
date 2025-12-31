@@ -13,15 +13,23 @@ Cada notebook implementa um pipeline completo de NLP clássico, desde o pré-pro
 ## 📁 Estrutura do projeto
 ```
 ├── notebooks/
-│   ├── sentiment_pt.ipynb    # Português
-│   ├── sentiment_es.ipynb    # Espanhol
-│   └── sentiment_en.ipynb    # Inglês
+│   ├── notebook.ipynb    # Português
+│   ├── notebook-es.ipynb    # Espanhol
+│   └── notebook-en.ipynb    # Inglês
 ├── models/
 │   ├── modelo_lr_sentimentos_es.pkl
 │   ├── modelo_svm_sentimentos_es.pkl
 │   └── tfidf_es.pkl
+├── modelo_lr_sentimentos_en.pkl
+│   ├── modelo_svm_sentimentos_en.pkl
+│   └── tfidf_en.pkl
+├── modelo_lr_sentimentos.pkl
+│   ├── modelo_svm_sentimentos.pkl
+│   └── tfidf.pkl
 ├── data/
-│   └── dataset_es.csv
+│   └── data.csv
+│   └── data-es.csv
+│   └── datas-en.csv
 ├── requirements.txt
 └── README.md
 ```
@@ -66,9 +74,9 @@ pip install -r requirements.txt
 ```
 
 3. Abra o notebook correspondente ao idioma desejado:
-   - `sentiment_pt.ipynb` (Português)
-   - `sentiment_es.ipynb` (Espanhol)
-   - `sentiment_en.ipynb` (Inglês)
+   - `notebook.ipynb` (Português)
+   - `notebook-es.ipynb` (Espanhol)
+   - `notebook-en.ipynb` (Inglês)
 
 4. Execute as células em ordem.
 
