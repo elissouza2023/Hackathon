@@ -87,15 +87,5 @@ Baixo custo computacional
 
 ---
 
-
-## 🚀 Próximos passos (opcional)
-
-Integração com Streamlit
-Visualizações de interpretabilidade (SHAP)
-Unificação do pipeline em módulos reutilizáveis
-Comparação de desempenho entre idiomas
-
----
-
 ## 📄 Licença
 Projeto de uso acadêmico e experimental.
