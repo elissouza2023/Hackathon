@@ -92,6 +92,9 @@ pip install -r requirements.txt
   - Baixo custo computacional
 
 ---
+## 📄 Link do Deploy
+https://avaliacaosentimentos.streamlit.app/
 
+---
 ## 📄 Licença
 Projeto de uso acadêmico e experimental.
