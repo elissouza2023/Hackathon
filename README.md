@@ -23,9 +23,8 @@ Cada notebook implementa um pipeline completo de NLP clássico, desde o pré-pro
 ├── modelo_lr_sentimentos_en.pkl
 │   ├── modelo_svm_sentimentos_en.pkl
 │   └── tfidf_en.pkl
-├── modelo_lr_sentimentos.pkl
-│   ├── modelo_svm_sentimentos.pkl
-│   └── tfidf.pkl
+├── pt_sentiment_model.pkl
+│   
 ├── data/
 │   └── data.csv
 │   └── data-es.csv
