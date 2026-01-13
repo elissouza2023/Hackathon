@@ -3,8 +3,8 @@ from utils import predict
 
 st.set_page_config(page_title="Kaida Search", page_icon="🌱", layout="centered")
 
-st.title("🌱 Kaida Search")
-st.write("Análise de Sentimentos Multilíngue para ESG avaliações de clientes")
+st.title("🌱 Análise de Sentimentos")
+st.write("Análise de Sentimentos Multilíngue para avaliações de clientes")
 
 lang = st.selectbox("Idioma do texto:", ["pt", "en", "es"])
 text = st.text_area("Digite o texto para análise:")
