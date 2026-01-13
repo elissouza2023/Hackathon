@@ -1,7 +1,7 @@
 import streamlit as st
 from utils import predict
 
-st.set_page_config(page_title="Kaida Search", page_icon="🌱", layout="centered")
+st.set_page_config(page_title="Anáiise de Sentimentos", page_icon="🌱", layout="centered")
 
 st.title("🌱 Análise de Sentimentos")
 st.write("Análise de Sentimentos Multilíngue para avaliações de clientes")
