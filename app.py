@@ -28,10 +28,9 @@ if st.button("Analisar"):
     else:
         label, prob = predict(text, lang)
 
-       if label == 1:
+        if label == 1:
             st.success("Sentimento POSITIVO")
         else:
             st.error("Sentimento NEGATIVO")
 
         st.write(f"Confiança do modelo: {prob:.2%}")
-
