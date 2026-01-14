@@ -1,8 +1,9 @@
 import joblib
+import os
 
-MODEL_PATH = "models/pt_sentiment_model.pkl"
+BASE_DIR = os.path.dirname(__file__)
+MODEL_PATH = os.path.join(BASE_DIR, "pt_sentiment_model.pkl")
 
-# Carrega uma única vez (cache em memória)
 _bundle = joblib.load(MODEL_PATH)
 
 _model = _bundle["model"]
