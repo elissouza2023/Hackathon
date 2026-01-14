@@ -22,13 +22,43 @@ lang = lang_map[lang_ui]
 
 text = st.text_area("Digite o texto para análise:")
 
+# Mapa entre interface e modelo
+lang_map = {
+    "Português - BR": "pt",
+    "English - US": "en",
+    "Spanish - 419": "es"
+}
+
+# Mapeamento de classes por idioma
+CLASS_MAPPING = {
+    "pt": {
+        "Positivo": "Positivo",
+        "Negativo": "Negativo",
+        "Neutro": "Neutro"
+    },
+    "es": {
+        "Positivo": "Positivo",
+        "Negativo": "Negativo",
+        "Neutral": "Neutro"
+    },
+    "en": {
+        "Positive": "Positivo",
+        "Negative": "Negativo",
+        "Neutral": "Neutro"
+    }
+}
+
+
 if st.button("Analisar"):
     if text.strip() == "":
         st.warning("Digite um texto.")
     else:
-        label, prob = predict(text, lang)
+        raw_label, prob = predict(text, lang)
 
-        label = label.strip().capitalize()
+        raw_label = raw_label.strip()
+
+        label = CLASS_MAPPING[lang].get(raw_label, f"Classe desconhecida: {raw_label}")
+
 
         if label == "Positivo":
             st.success("Sentimento POSITIVO")
