@@ -30,14 +30,14 @@ if st.button("Analisar"):
 
         label = label.strip().capitalize()
 
-if label == "Positivo":
-    st.success("Sentimento POSITIVO")
-elif label == "Negativo":
-    st.error("Sentimento NEGATIVO")
-elif label == "Neutro":
-    st.info("Sentimento NEUTRO")
-else:
-    st.warning(f"Classe desconhecida: {label}")
-
+        if label == "Positivo":
+            st.success("Sentimento POSITIVO")
+        elif label == "Negativo":
+            st.error("Sentimento NEGATIVO")
+        elif label == "Neutro":
+            st.info("Sentimento NEUTRO")
+        else:
+            st.warning(f"Classe desconhecida: {label}")
 
         st.write(f"Confiança do modelo: {prob:.2%}")
+
