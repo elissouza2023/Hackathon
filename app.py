@@ -67,6 +67,7 @@ if st.button("Analisar"):
         if use_file:
             df = pd.read_csv(uploaded_file)
 
+            df.columns = df.columns.str.strip().str.lower()
             if "text" not in df.columns:
                 st.error("O CSV deve conter uma coluna chamada 'text'.")
             else:
