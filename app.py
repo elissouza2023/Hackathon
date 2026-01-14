@@ -65,7 +65,7 @@ if st.button("Analisar"):
     
     else:
         if use_file:
-            df = pd.read_csv(uploaded_file)
+            df = pd.read_csv(uploaded_file, encoding="utf-8-sig")
 
             df.columns = df.columns.str.strip().str.lower()
             if "text" not in df.columns:
