@@ -1,37 +1,41 @@
-# Análise de Sentimentos Multilíngue (PT / ES / EN)
+# 📊 Análise de Sentimentos Multilíngue (PT / ES / EN)
 
 Este projeto contém notebooks independentes para **análise de sentimentos** em três idiomas:
 
-- Português
-- Espanhol
-- Inglês
+- 🇧🇷 Português  
+- 🇪🇸 Espanhol  
+- 🇺🇸 Inglês  
 
-Cada notebook implementa um pipeline completo de NLP clássico, desde o pré-processamento até a avaliação dos modelos, respeitando as particularidades linguísticas de cada idioma.
+Cada notebook implementa um **pipeline completo de NLP clássico**, desde o pré-processamento até a avaliação dos modelos, respeitando as particularidades linguísticas de cada idioma.
 
 ---
 
 ## 📁 Estrutura do projeto
-```
+
+```text
 ├── notebooks/
-│   ├── notebook.ipynb    # Português
-│   ├── notebook-es.ipynb    # Espanhol
-│   └── notebook-en.ipynb    # Inglês
+│   ├── notebook.ipynb        # Português
+│   ├── notebook-es.ipynb     # Espanhol
+│   └── notebook-en.ipynb     # Inglês
+│
 ├── models/
 │   ├── modelo_lr_sentimentos_es.pkl
 │   ├── modelo_svm_sentimentos_es.pkl
-│   └── tfidf_es.pkl
-├── modelo_lr_sentimentos_en.pkl
+│   ├── tfidf_es.pkl
+│   ├── modelo_lr_sentimentos_en.pkl
 │   ├── modelo_svm_sentimentos_en.pkl
 │   └── tfidf_en.pkl
+│
 ├── pt_sentiment_model.pkl
-│   
+│
 ├── data/
-│   └── data.csv
-│   └── data-es.csv
-│   └── datas-en.csv
+│   ├── data.csv
+│   ├── data-es.csv
+│   └── data-en.csv
+│
 ├── requirements.txt
 └── README.md
-```
+
 
 ## 🧠 Metodologia
 
@@ -64,7 +68,7 @@ Os modelos treinados e o vetorizador TF-IDF são armazenados na pasta `models/` 
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/elissouza2023/Hackathon/blob/main
+git clone git clone https://github.com/elissouza2023/Hackathon.git
 ```
 
 2. Instale as dependências:
@@ -91,7 +95,8 @@ pip install -r requirements.txt
   - Baixo custo computacional
 
 ---
-## 📄 Link do Deploy
+## 🚀 Deploy
+A aplicação está disponível em:
 https://avaliacaosentimentos.streamlit.app/
 
 ---
