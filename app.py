@@ -4,7 +4,7 @@ from utils import predict
 st.set_page_config(page_title="Análise de Sentimentos", page_icon="🌱", layout="centered")
 
 st.title("🌱 Análise de Sentimentos")
-st.write("Análise de Sentimentos Multilíngue para avaliações de clientes")
+st.write("Análise de Sentimentos Multilíngue para categorizar as avaliações dos clientes em : Positivo, Negativo ou Neutro")
 
 lang_ui = st.selectbox(
     "Idioma do texto:",
