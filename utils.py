@@ -9,16 +9,16 @@ BASE_DIR = os.path.dirname(__file__)
 # ===============================
 MODELS = {
     "pt": {
-        "model": joblib.load(os.path.join(BASE_DIR, "models/modelo_lr_sentimentos.pkl")),
-        "vectorizer": joblib.load(os.path.join(BASE_DIR, "models/tfidf.pkl")),
+        "model": joblib.load(os.path.join(BASE_DIR, "modelo_lr_sentimentos.pkl")),
+        "vectorizer": joblib.load(os.path.join(BASE_DIR, "tfidf.pkl")),
     },
     "en": {
-        "model": joblib.load(os.path.join(BASE_DIR, "models/en_model.pkl")),
-        "vectorizer": joblib.load(os.path.join(BASE_DIR, "models/en_tfidf.pkl")),
+        "model": joblib.load(os.path.join(BASE_DIR, "en_model.pkl")),
+        "vectorizer": joblib.load(os.path.join(BASE_DIR, "en_tfidf.pkl")),
     },
     "es": {
-        "model": joblib.load(os.path.join(BASE_DIR, "models/es_model.pkl")),
-        "vectorizer": joblib.load(os.path.join(BASE_DIR, "models/es_tfidf.pkl")),
+        "model": joblib.load(os.path.join(BASE_DIR, "es_model.pkl")),
+        "vectorizer": joblib.load(os.path.join(BASE_DIR, "es_tfidf.pkl")),
     },
 }
 
