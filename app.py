@@ -232,19 +232,19 @@ if st.button("Analisar"):
             )
 
             st.markdown(f"""
-            <div style="
+            <div class="result-card" style="
                 background-color: #ffffff;
                 padding: 20px;
                 border-radius: 12px;
                 text-align: center;
                 margin-top: 20px;
-                color: #000000;
             ">
                 <h3>Resultado da Análise</h3>
                 <p><strong>Sentimento:</strong> {label}</p>
                 <p><strong>Confiança:</strong> {prob:.2%}</p>
             </div>
             """, unsafe_allow_html=True)
+
 
 
 # =========================
