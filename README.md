@@ -14,9 +14,9 @@ Cada notebook implementa um **pipeline completo de NLP clássico**, desde o pré
 
 ```text
 ├── notebooks/
-│   ├── notebook.ipynb        # Português
-│   ├── notebook-es.ipynb     # Espanhol
-│   └── notebook-en.ipynb     # Inglês
+│   ├── notebook.ipynb          # Português
+│   ├── notebook-es.ipynb       # Espanhol
+│   └── notebook-en.ipynb       # Inglês
 │
 ├── models/
 │   ├── modelo_lr_sentimentos_es.pkl
@@ -36,8 +36,9 @@ Cada notebook implementa um **pipeline completo de NLP clássico**, desde o pré
 ├── requirements.txt
 └── README.md
 
+---
 
-## 🧠 Metodologia
+##🧠 Metodologia
 
 Em cada idioma é utilizado o mesmo enfoque geral:
 
