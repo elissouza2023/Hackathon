@@ -41,10 +41,18 @@ label {
     color: #ffffff !important;
 }
 
-/* Texto dentro dos inputs */
-input, textarea {
-    color: #ffffff !important;
+/* Inputs de texto */
+textarea, input {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border-radius: 8px;
 }
+
+/* Placeholder */
+textarea::placeholder {
+    color: #666666 !important;
+}
+
 
 /* Botões */
 button {
@@ -65,6 +73,16 @@ st.markdown("""
     background: rgba(0, 0, 0, 0.4);
     z-index: -1;
 }
+
+/* Nome do arquivo no uploader */
+[data-testid="stFileUploader"] div {
+    color: #ffffff !important;
+}
+[data-testid="stFileUploader"] div {
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -162,12 +180,21 @@ if st.button("Analisar"):
             raw_label = raw_label.strip()
             label = CLASS_MAPPING[lang].get(raw_label, f"Classe desconhecida: {raw_label}")
 
-            if label == "Positivo":
-                st.success("Sentimento POSITIVO")
-            elif label == "Negativo":
-                st.error("Sentimento NEGATIVO")
-            elif label == "Neutro":
-                st.info("Sentimento NEUTRO")
+            st.markdown(f"""
+<div style="
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 20px;
+    color: #000000;
+">
+    <h3>Resultado da Análise</h3>
+    <p><strong>Sentimento:</strong> {label}</p>
+    <p><strong>Confiança:</strong> {prob:.2%}</p>
+</div>
+""", unsafe_allow_html=True)
+
             else:
                 st.warning(label)
 
