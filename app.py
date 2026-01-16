@@ -75,6 +75,11 @@ button {
     border-radius: 10px;
     font-weight: 600;
 }
+/* Texto interno do botão */
+button span, 
+button div {
+    color: #3c3c3c !important;
+}
 
 /* Overlay escuro */
 .stApp::before {
@@ -85,11 +90,21 @@ button {
     z-index: -1;
 }
 
-/* Nome do arquivo no uploader */
-[data-testid="stFileUploader"] div {
-    color: #ffffff !important;
-    font-weight: 500;
+/* Área de upload CSV */
+[data-testid="stFileUploader"] {
+    background-color: #f5f5f5;
+    border-radius: 10px;
 }
+
+[data-testid="stFileUploader"] p,
+[data-testid="stFileUploader"] span,
+[data-testid="stFileUploader"] div {
+    color: #3c3c3c !important;
+}
+[data-testid="stFileUploader"] {
+    border: 1px dashed #cccccc;
+}
+
 
 /* Texto do st.write, st.markdown e textos comuns */
 p, span, div[data-testid="stMarkdownContainer"] p {
