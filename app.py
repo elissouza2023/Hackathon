@@ -28,7 +28,7 @@ st.markdown("""
 <style>
 /* Texto geral */
 html, body, [class*="css"]  {
-    color: #ffffff !important;
+    color: #3c3c3c !important;
 }
 
 /* Títulos */
