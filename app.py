@@ -45,6 +45,11 @@ st.markdown("""
 html, body, [class*="css"] {
     color: #ffffff !important;
 }
+/* Card de resultado */
+.result-card,
+.result-card * {
+    color: #000000 !important;
+}
 
 /* Títulos */
 h1, h2, h3, h4, h5, h6 {
@@ -104,14 +109,19 @@ button div {
 [data-testid="stFileUploader"] {
     border: 1px dashed #cccccc;
 }
-
-
-/* Texto do st.write, st.markdown e textos comuns */
-p, span, div[data-testid="stMarkdownContainer"] p {
-    color: #ffffff !important;
-}
+/* Texto padrão do Streamlit (st.write, descrições) */
 div[data-testid="stMarkdownContainer"] p {
     color: #ffffff !important;
+}
+/* Força texto do botão */
+button, 
+button * {
+    color: #3c3c3c !important;
+}
+/* Card de resultado */
+.result-card,
+.result-card * {
+    color: #000000 !important;
 }
 
 </style>
