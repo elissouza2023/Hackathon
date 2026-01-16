@@ -109,11 +109,14 @@ st.markdown(
         box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
-    .result-card h3,
-    .result-card p,
-    .result-card strong {
-        color: #000000 !important;
-    }
+   /* Força texto do card de resultado (vence MarkdownContainer) */
+        div.result-card h3,
+        div.result-card p,
+        div.result-card strong,
+        div.result-card span {
+            color: #3c3c3c !important;
+}
+
 
     /* ================= FOOTER ================= */
     .footer {
