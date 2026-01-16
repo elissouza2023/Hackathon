@@ -101,7 +101,7 @@ st.markdown(
 
     /* ================= CARD DE RESULTADO ================= */
     .result-card {
-        background-color: #ffffff;
+        background-color: #3c3c3c;
         padding: 24px;
         border-radius: 14px;
         text-align: center;
