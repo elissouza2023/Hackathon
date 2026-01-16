@@ -95,6 +95,9 @@ button {
 p, span, div[data-testid="stMarkdownContainer"] p {
     color: #ffffff !important;
 }
+div[data-testid="stMarkdownContainer"] p {
+    color: #ffffff !important;
+}
 
 </style>
 """, unsafe_allow_html=True)
