@@ -86,6 +86,18 @@ st.markdown(
     .stButton > button span {
         color: #3c3c3c !important;
     }
+    /* ================= BOTÃO ANALISAR (ESPECÍFICO) ================= */
+        div.stButton > button:has(span:contains("Analisar")) {
+        background-color: #001969 !important;
+        color: #ffffff !important;
+        font-weight: 700;
+        border-radius: 12px;
+        padding: 0.6em 1.5em;
+    }
+
+    div.stButton > button:has(span:contains("Analisar")) span {
+    color: #ffffff !important;
+    }
 
     /* ================= UPLOAD CSV ================= */
     [data-testid="stFileUploader"] {
