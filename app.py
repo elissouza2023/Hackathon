@@ -90,6 +90,12 @@ button {
     color: #ffffff !important;
     font-weight: 500;
 }
+
+/* Texto do st.write, st.markdown e textos comuns */
+p, span, div[data-testid="stMarkdownContainer"] p {
+    color: #ffffff !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
