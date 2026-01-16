@@ -114,7 +114,7 @@ st.markdown(
         div.result-card p,
         div.result-card strong,
         div.result-card span {
-            color: #3c3c3c !important;
+            color: #001969 !important;
 }
 
 
