@@ -35,7 +35,7 @@ def set_background(image_file: str):
 set_background("fundo.jpg")
 
 # =====================================================
-# CSS PERSONALIZADO (corrigido e mais controlado)
+# CSS PERSONALIZADO 
 # =====================================================
 st.markdown(
     """
@@ -87,6 +87,33 @@ st.markdown(
         color: rgba(255, 255, 255, 0.8);
         font-size: 0.9rem;
         margin-top: 4rem;
+    }
+    /* === MELHORIA NO FILE UPLOADER === */
+
+    /* Texto da instrução/informação do uploader */
+    div[data-testid="stFileUploader"] > div > div > div > p,
+    div[data-testid="stFileUploader"] label,
+    div[data-testid="stFileUploader"] small {
+    color: white !important;
+    }
+
+    /* Nome do arquivo selecionado + botão "Browse files" */
+    div[data-testid="stFileUploader"] button,
+    div[data-testid="stFileUploader"] div[role="button"] > div,
+    div[data-testid="stFileUploader"] span[data-testid="stFileName"] {
+    color: white !important;
+    background-color: rgba(76, 175, 80, 0.25) !important;  /* verde bem suave opcional */
+    }
+
+    /* Ícone do upload e borda quando focado/hover */
+    div[data-testid="stFileUploader"] svg,
+    div[data-testid="stFileUploader"]:hover {
+    color: white !important;
+    }
+
+    /* Placeholder quando nada selecionado */
+    div[data-testid="stFileUploader"] input::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
     }
     </style>
     """,
