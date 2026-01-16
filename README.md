@@ -1,7 +1,6 @@
 # 📊 Análise de Sentimentos Multilíngue (PT / ES / EN)
 
 Este projeto contém notebooks independentes para **análise de sentimentos** em três idiomas:
-
 - 🇧🇷 Português  
 - 🇪🇸 Espanhol  
 - 🇺🇸 Inglês  
@@ -35,10 +34,11 @@ Cada notebook implementa um **pipeline completo de NLP clássico**, desde o pré
 │
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
-##🧠 Metodologia
+## 🧠 Metodologia
 
 Em cada idioma é utilizado o mesmo enfoque geral:
 
@@ -58,6 +58,8 @@ Em cada idioma é utilizado o mesmo enfoque geral:
 
 As regras de pré-processamento são adaptadas especificamente para cada idioma.
 
+---
+
 ## 📊 Modelos incluídos
 
 - Regressão Logística
@@ -65,11 +67,13 @@ As regras de pré-processamento são adaptadas especificamente para cada idioma.
 
 Os modelos treinados e o vetorizador TF-IDF são armazenados na pasta `models/` para reutilização e possíveis etapas de deploy.
 
+---
+
 ## ▶️ Como usar
 
 1. Clone o repositório:
 ```bash
-git clone git clone https://github.com/elissouza2023/Hackathon.git
+git clone https://github.com/elissouza2023/Hackathon.git
 ```
 
 2. Instale as dependências:
@@ -96,10 +100,14 @@ pip install -r requirements.txt
   - Baixo custo computacional
 
 ---
+
 ## 🚀 Deploy
-A aplicação está disponível em:
+
+A aplicação está disponível em:  
 https://avaliacaosentimentos.streamlit.app/
 
 ---
+
 ## 📄 Licença
+
 Projeto de uso acadêmico e experimental.
