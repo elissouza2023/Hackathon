@@ -28,7 +28,7 @@ st.markdown("""
 <style>
 /* Texto geral */
 html, body, [class*="css"]  {
-    color: #3c3c3c !important;
+    color: #ffffff !important;
 }
 
 /* Títulos */
@@ -48,7 +48,7 @@ input, textarea {
 
 /* Botões */
 button {
-    color: #ffffff !important;
+    color: #3c3c3c !important;
 }
 </style>
 """, unsafe_allow_html=True)
