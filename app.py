@@ -1,6 +1,73 @@
 import streamlit as st
 from utils import predict
 import pandas as pd
+import streamlit as st
+import base64
+
+
+def set_background(image_file):
+    with open(image_file, "rb") as f:
+        encoded = base64.b64encode(f.read()).decode()
+
+    css = f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{encoded}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }}
+    </style>
+    """
+    st.markdown(css, unsafe_allow_html=True)
+
+
+set_background("fundo.jpg")
+
+st.markdown("""
+<style>
+/* Texto geral */
+html, body, [class*="css"]  {
+    color: #ffffff !important;
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+}
+
+/* Labels de inputs */
+label {
+    color: #ffffff !important;
+}
+
+/* Texto dentro dos inputs */
+input, textarea {
+    color: #ffffff !important;
+}
+
+/* Botões */
+button {
+    color: #ffffff !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+.stApp::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+</style>
+""", unsafe_allow_html=True)
+
 
 
 st.set_page_config(page_title="Análise de Sentimentos", page_icon="🌱", layout="centered")
@@ -106,3 +173,21 @@ if st.button("Analisar"):
 
             st.write(f"Confiança do modelo: {prob:.2%}")
 
+st.markdown("""
+<style>
+.footer {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-size: 12px;
+    opacity: 0.8;
+}
+</style>
+
+<div class="footer">
+© 2026 •  Análise de Sentimentos • Todos os Direitos Reservados
+</div>
+""", unsafe_allow_html=True)
