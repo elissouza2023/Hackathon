@@ -95,8 +95,8 @@ st.markdown(
         padding: 0.6em 1.5em;
     }
 
-    div.stButton > button:has(span:contains("Analisar")) span {
-    color: #ffffff !important;
+        div.stButton > button:has(span:contains("Analisar")) span {
+        color: #ffffff !important;
     }
 
     /* ================= UPLOAD CSV ================= */
