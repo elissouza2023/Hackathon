@@ -1,10 +1,12 @@
 import streamlit as st
-from utils import predict
 import pandas as pd
-import streamlit as st
 import base64
+from utils import predict
 
 
+# =========================
+# FUNÇÃO DE FUNDO
+# =========================
 def set_background(image_file):
     with open(image_file, "rb") as f:
         encoded = base64.b64encode(f.read()).decode()
@@ -22,12 +24,25 @@ def set_background(image_file):
     st.markdown(css, unsafe_allow_html=True)
 
 
+# =========================
+# CONFIGURAÇÃO DA PÁGINA
+# =========================
+st.set_page_config(
+    page_title="Análise de Sentimentos",
+    page_icon="🌱",
+    layout="centered"
+)
+
 set_background("fundo.jpg")
 
+
+# =========================
+# CSS GLOBAL
+# =========================
 st.markdown("""
 <style>
 /* Texto geral */
-html, body, [class*="css"]  {
+html, body, [class*="css"] {
     color: #ffffff !important;
 }
 
@@ -36,12 +51,12 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff !important;
 }
 
-/* Labels de inputs */
+/* Labels */
 label {
     color: #ffffff !important;
 }
 
-/* Inputs de texto */
+/* Inputs */
 textarea, input {
     background-color: #ffffff !important;
     color: #000000 !important;
@@ -53,23 +68,19 @@ textarea::placeholder {
     color: #666666 !important;
 }
 
-
 /* Botões */
 button {
+    background-color: #ffffff !important;
     color: #3c3c3c !important;
+    border-radius: 10px;
+    font-weight: 600;
 }
-</style>
-""", unsafe_allow_html=True)
 
-st.markdown("""
-<style>
+/* Overlay escuro */
 .stApp::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(0, 0, 0, 0.4);
     z-index: -1;
 }
@@ -77,28 +88,26 @@ st.markdown("""
 /* Nome do arquivo no uploader */
 [data-testid="stFileUploader"] div {
     color: #ffffff !important;
-}
-[data-testid="stFileUploader"] div {
-    color: #ffffff !important;
     font-weight: 500;
 }
-
 </style>
 """, unsafe_allow_html=True)
 
 
-
-st.set_page_config(page_title="Análise de Sentimentos", page_icon="🌱", layout="centered")
-
+# =========================
+# INTERFACE
+# =========================
 st.title("🌱 Análise de Sentimentos")
-st.write("Análise de Sentimentos Multilíngue para categorizar as avaliações dos clientes em : Positivo, Negativo ou Neutro")
+st.write(
+    "Análise de Sentimentos Multilíngue para categorizar as avaliações dos clientes em: "
+    "Positivo, Negativo ou Neutro"
+)
 
 lang_ui = st.selectbox(
     "Idioma do texto:",
     ["Português - BR", "English - US", "Spanish - 419"]
 )
 
-# Mapa entre interface e modelo
 lang_map = {
     "Português - BR": "pt",
     "English - US": "en",
@@ -115,14 +124,10 @@ uploaded_file = st.file_uploader(
     type=["csv"]
 )
 
-# Mapa entre interface e modelo
-lang_map = {
-    "Português - BR": "pt",
-    "English - US": "en",
-    "Spanish - 419": "es"
-}
 
-# Mapeamento de classes por idioma
+# =========================
+# MAPEAMENTO DE CLASSES
+# =========================
 CLASS_MAPPING = {
     "pt": {
         "Positivo": "Positivo",
@@ -141,18 +146,23 @@ CLASS_MAPPING = {
     }
 }
 
+
+# =========================
+# AÇÃO
+# =========================
 use_file = uploaded_file is not None
 
-
 if st.button("Analisar"):
+
     if not use_file and text.strip() == "":
         st.warning("Digite um texto ou envie um CSV.")
-    
+
     else:
+        # -------- CSV --------
         if use_file:
             df = pd.read_csv(uploaded_file, encoding="utf-8-sig")
-
             df.columns = df.columns.str.strip().str.lower()
+
             if "text" not in df.columns:
                 st.error("O CSV deve conter uma coluna chamada 'text'.")
             else:
@@ -161,11 +171,15 @@ if st.button("Analisar"):
                 for t in df["text"]:
                     raw_label, prob = predict(str(t), lang)
                     raw_label = raw_label.strip()
-                    label = CLASS_MAPPING[lang].get(raw_label, f"Classe desconhecida: {raw_label}")
-
+                    label = CLASS_MAPPING[lang].get(
+                        raw_label, f"Classe desconhecida: {raw_label}"
+                    )
                     results.append((t, label, prob))
 
-                result_df = pd.DataFrame(results, columns=["Texto", "Sentimento", "Confiança"])
+                result_df = pd.DataFrame(
+                    results, columns=["Texto", "Sentimento", "Confiança"]
+                )
+
                 st.dataframe(result_df)
 
                 st.download_button(
@@ -175,31 +189,33 @@ if st.button("Analisar"):
                     mime="text/csv"
                 )
 
+        # -------- TEXTO ÚNICO --------
         else:
             raw_label, prob = predict(text, lang)
             raw_label = raw_label.strip()
-            label = CLASS_MAPPING[lang].get(raw_label, f"Classe desconhecida: {raw_label}")
+            label = CLASS_MAPPING[lang].get(
+                raw_label, f"Classe desconhecida: {raw_label}"
+            )
 
             st.markdown(f"""
-<div style="
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    margin-top: 20px;
-    color: #000000;
-">
-    <h3>Resultado da Análise</h3>
-    <p><strong>Sentimento:</strong> {label}</p>
-    <p><strong>Confiança:</strong> {prob:.2%}</p>
-</div>
-""", unsafe_allow_html=True)
+            <div style="
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 12px;
+                text-align: center;
+                margin-top: 20px;
+                color: #000000;
+            ">
+                <h3>Resultado da Análise</h3>
+                <p><strong>Sentimento:</strong> {label}</p>
+                <p><strong>Confiança:</strong> {prob:.2%}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
-            else:
-                st.warning(label)
 
-            st.write(f"Confiança do modelo: {prob:.2%}")
-
+# =========================
+# FOOTER
+# =========================
 st.markdown("""
 <style>
 .footer {
@@ -215,6 +231,6 @@ st.markdown("""
 </style>
 
 <div class="footer">
-© 2026 •  Análise de Sentimentos • Todos os Direitos Reservados
+© 2026 • Análise de Sentimentos • Todos os Direitos Reservados
 </div>
 """, unsafe_allow_html=True)
