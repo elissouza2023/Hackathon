@@ -49,7 +49,7 @@ st.markdown(
     }
 
     /* Títulos e textos brancos */
-    h1, h2, h3, .stMarkdown, label, .stSelectbox > div > div, .stTextArea label {
+    h1, h2, h3, .stMarkdown, label > div > div, .stTextArea label {
         color: white !important;
     }
 
