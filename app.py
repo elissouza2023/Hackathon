@@ -113,16 +113,32 @@ button div {
 div[data-testid="stMarkdownContainer"] p {
     color: #ffffff !important;
 }
-/* Força texto do botão */
-button, 
-button * {
+/* Botão Streamlit - texto sempre visível */
+.stButton > button {
+    background-color: #ffffff !important;
+    color: #3c3c3c !important;
+    font-weight: 600;
+}
+
+.stButton > button span {
     color: #3c3c3c !important;
 }
+
+
 /* Card de resultado */
-.result-card,
-.result-card * {
+.result-card {
+    background-color: #ffffff !important;
+}
+
+.result-card h3 {
     color: #000000 !important;
 }
+
+.result-card p,
+.result-card strong {
+    color: #000000 !important;
+}
+
 
 </style>
 """, unsafe_allow_html=True)
