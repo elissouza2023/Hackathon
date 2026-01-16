@@ -96,7 +96,7 @@ st.markdown(
     }
 
         div.stButton > button:has(span:contains("Analisar")) span {
-        color: #ffffff !important;
+        color: #3c3c3c !important;
     }
 
     /* ================= UPLOAD CSV ================= */
