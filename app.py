@@ -203,7 +203,7 @@ if st.button("Analisar"):
 
     # Processamento de texto único
     else:
-        raw_label, prob = predict(text, lang)
+        aw_label, prob = predict("" if pd.isna(t) else str(t), lang)
         label = CLASS_MAPPING[lang].get(raw_label.strip(), raw_label)
         
         # Resultado destacado
