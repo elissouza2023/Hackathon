@@ -6,6 +6,7 @@ from utils import predict
 # =====================================================
 # CONFIGURAÇÃO DA PÁGINA
 # =====================================================
+
 st.set_page_config(
     page_title="Análise de Sentimentos",
     page_icon="🌱",
@@ -15,9 +16,11 @@ st.set_page_config(
 # =====================================================
 # FUNDO COM IMAGEM
 # =====================================================
+
 def set_background(image_file: str):
     with open(image_file, "rb") as f:
         encoded = base64.b64encode(f.read()).decode()
+
     st.markdown(
         f"""
         <style>
@@ -35,194 +38,171 @@ def set_background(image_file: str):
 set_background("fundo.jpg")
 
 # =====================================================
-# CSS PERSONALIZADO 
+# CSS PERSONALIZADO
 # =====================================================
+
 st.markdown(
-    """
-    <style>
-    /* Fundo escuro semitransparente nos containers principais */
-    .main > div {
-        background-color: rgba(0, 0, 0, 0.4);
-        padding: 2rem;
-        border-radius: 15px;
-        backdrop-filter: blur(5px);
-    }
+"""
+<style>
 
-    /* Títulos e textos brancos */
-    h1, h2, h3, .stMarkdown, label > div > div, .stTextArea label {
-        color: white !important;
-    }
+.main > div {
+    background-color: rgba(0,0,0,0.4);
+    padding: 2rem;
+    border-radius: 15px;
+}
 
-    /* Botão Analisar visível e estilizado */
-    div.stButton > button {
-        background-color: #4CAF50;
-        color: white;
-        font-weight: bold;
-        border: none;
-        padding: 0.8rem 2rem;
-        border-radius: 8px;
-        height: auto;
-        width: 100%;
-        font-size: 1.2rem;
-    }
-    div.stButton > button:hover {
-        background-color: #45a049;
-    }
-
-    /* Ajuste do tamanho do subtítulo "Ou envie um arquivo CSV" */
-    .csv-subtitle h3 {
-        font-size: 1.1rem !important;
-        margin-top: 2rem;
-        margin-bottom: 0.8rem;
-    }
-
-    /* File uploader mais visível */
-    .uploadedFile {
-        color: white;
-    }
-
-    /* Footer */
-    .footer {
-        text-align: center;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
-        margin-top: 4rem;
-    }
-    /* === MELHORIA NO FILE UPLOADER === */
-
-    /* Texto da instrução/informação do uploader */
-    div[data-testid="stFileUploader"] > div > div > div > p,
-    div[data-testid="stFileUploader"] label,
-    div[data-testid="stFileUploader"] small {
+h1, h2, h3, .stMarkdown {
     color: white !important;
-    }
+}
 
-    /* Nome do arquivo selecionado + botão "Browse files" */
-    div[data-testid="stFileUploader"] button,
-    div[data-testid="stFileUploader"] div[role="button"] > div,
-    div[data-testid="stFileUploader"] span[data-testid="stFileName"] {
-    color: white !important;
-    background-color: rgba(76, 175, 80, 0.25) !important;  /* verde bem suave opcional */
-    }
+div.stButton > button {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    font-size: 1.2rem;
+}
 
-    /* Ícone do upload e borda quando focado/hover */
-    div[data-testid="stFileUploader"] svg,
-    div[data-testid="stFileUploader"]:hover {
-    color: white !important;
-    }
+.footer {
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+}
 
-    /* Placeholder quando nada selecionado */
-    div[data-testid="stFileUploader"] input::placeholder {
-    color: rgba(255, 255, 255, 0.7) !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
+</style>
+""",
+unsafe_allow_html=True
 )
 
 # =====================================================
-# INTERFACE PRINCIPAL
+# INTERFACE
 # =====================================================
+
 st.title("🌱 Análise de Sentimentos")
 
 st.markdown(
-    "Análise de Sentimentos Multilíngue para categorizar as avaliações dos clientes em: "
-    "**Positivo**, **Negativo** ou **Neutro**"
+"Análise de Sentimentos Multilíngue para classificar avaliações em **Positivo, Negativo ou Neutro**."
 )
 
 lang_ui = st.selectbox(
-    "Idioma do texto:",
-    ["Português - BR", "English - US", "Spanish - 419"]
+"Idioma do texto:",
+["Português - BR", "English - US", "Spanish - 419"]
 )
 
 LANG_MAP = {
-    "Português - BR": "pt",
-    "English - US": "en",
-    "Spanish - 419": "es"
+"Português - BR": "pt",
+"English - US": "en",
+"Spanish - 419": "es"
 }
+
 lang = LANG_MAP[lang_ui]
 
 text = st.text_area("Digite o texto para análise:")
 
-# Subtítulo com classe personalizada para controlar o tamanho
-st.markdown('<div class="csv-subtitle"><h3>Ou envie um arquivo CSV</h3></div>', unsafe_allow_html=True)
-
 uploaded_file = st.file_uploader(
-    "O CSV deve conter uma coluna chamada 'text'",
-    type=["csv"],
-    help="Máximo 200MB • Apenas arquivos .csv"
+"Ou envie um arquivo CSV com coluna chamada 'text'",
+type=["csv"]
 )
 
 # =====================================================
 # MAPEAMENTO DE CLASSES
 # =====================================================
+
 CLASS_MAPPING = {
-    "pt": {"Positivo": "Positivo", "Negativo": "Negativo", "Neutro": "Neutro"},
-    "es": {"Positivo": "Positivo", "Negativo": "Negativo", "Neutral": "Neutro"},
-    "en": {"Positive": "Positivo", "Negative": "Negativo", "Neutral": "Neutro"}
+"pt": {"Positivo":"Positivo","Negativo":"Negativo","Neutro":"Neutro"},
+"es": {"Positivo":"Positivo","Negativo":"Negativo","Neutral":"Neutro"},
+"en": {"Positive":"Positivo","Negative":"Negativo","Neutral":"Neutro"}
 }
 
 # =====================================================
-# BOTÃO ANALISAR (agora bem visível)
+# BOTÃO ANALISAR
 # =====================================================
-use_file = uploaded_file is not None
 
 if st.button("Analisar"):
-    if not use_file and not text.strip():
-        st.warning("⚠️ Digite um texto ou envie um arquivo CSV para analisar.")
-        st.stop()
 
-    # Processamento do CSV
-    if use_file:
-        try:
-            df = pd.read_csv(uploaded_file, encoding="utf-8-sig")
-            df.columns = df.columns.str.strip().str.lower()
-            if "text" not in df.columns:
-                st.error("❌ O CSV deve conter uma coluna chamada exatamente 'text'.")
-                st.stop()
+    # =============================
+    # TEXTO DIGITADO
+    # =============================
 
-            results = []
-            for t in df["text"]:
-                raw_label, prob = predict(str(t), lang)
-                label = CLASS_MAPPING[lang].get(raw_label.strip(), raw_label)
-                results.append((t, label, f"{prob:.2%}"))
+    if uploaded_file is None:
 
-            result_df = pd.DataFrame(results, columns=["Texto", "Sentimento", "Confiança"])
-            st.success("✅ Análise concluída!")
-            st.dataframe(result_df, use_container_width=True)
+        if not text.strip():
+            st.warning("Digite um texto.")
+            st.stop()
 
-            csv_data = result_df.to_csv(index=False).encode("utf-8")
-            st.download_button(
-                label="📥 Baixar resultados como CSV",
-                data=csv_data,
-                file_name="resultado_sentimentos.csv",
-                mime="text/csv"
-            )
-        except Exception as e:
-            st.error(f"Erro ao processar o CSV: {e}")
+        raw_label, prob = predict("" if pd.isna(text) else str(text), lang)
 
-    # Processamento de texto único
-    else:
-        aw_label, prob = predict("" if pd.isna(t) else str(t), lang)
         label = CLASS_MAPPING[lang].get(raw_label.strip(), raw_label)
-        
-        # Resultado destacado
+
         st.markdown(
-            f"""
-            <div style="background-color: rgba(0,0,0,0.5); padding: 2rem; border-radius: 15px; text-align: center; margin-top: 2rem;">
-                <h2 style="color: white; margin-bottom: 1rem;">Resultado da Análise</h2>
-                <h3 style="color: {'#4CAF50' if label == 'Positivo' else '#f44336' if label == 'Negativo' else '#ff9800'};">
-                    Sentimento: {label}
-                </h3>
-                <h4 style="color: white;">
-                    Confiança: {prob:.2%}
-                </h4>
-            </div>
-            """,
-            unsafe_allow_html=True
+        f"""
+        <div style="background-color:rgba(0,0,0,0.6);
+                    padding:30px;
+                    border-radius:15px;
+                    text-align:center">
+
+        <h2 style="color:white">Resultado</h2>
+
+        <h3 style="color:{'#4CAF50' if label=='Positivo' else '#f44336' if label=='Negativo' else '#ff9800'}">
+        {label}
+        </h3>
+
+        <h4 style="color:white">
+        Confiança: {prob:.2%}
+        </h4>
+
+        </div>
+        """,
+        unsafe_allow_html=True
+        )
+
+    # =============================
+    # CSV
+    # =============================
+
+    else:
+
+        df = pd.read_csv(uploaded_file, encoding="utf-8-sig")
+
+        df.columns = df.columns.str.strip().str.lower()
+
+        if "text" not in df.columns:
+            st.error("O CSV precisa ter coluna chamada 'text'")
+            st.stop()
+
+        results = []
+
+        for t in df["text"]:
+
+            raw_label, prob = predict("" if pd.isna(t) else str(t), lang)
+
+            label = CLASS_MAPPING[lang].get(raw_label.strip(), raw_label)
+
+            results.append((t, label, f"{prob:.2%}"))
+
+        result_df = pd.DataFrame(
+            results,
+            columns=["Texto","Sentimento","Confiança"]
+        )
+
+        st.success("Análise concluída!")
+
+        st.dataframe(result_df)
+
+        csv = result_df.to_csv(index=False).encode("utf-8")
+
+        st.download_button(
+        "Baixar resultado CSV",
+        csv,
+        "resultado_sentimentos.csv",
+        "text/csv"
         )
 
 # =====================================================
 # FOOTER
 # =====================================================
-st.markdown('<div class="footer">© 2026 • Análise de Sentimentos • Todos os Direitos Reservados</div>', unsafe_allow_html=True)
+
+st.markdown(
+'<div class="footer">© 2026 • Análise de Sentimentos</div>',
+unsafe_allow_html=True
+)
